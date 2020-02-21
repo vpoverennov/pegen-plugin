@@ -1,0 +1,68 @@
+{
+  parserClass="com.vpoverennov.parser.PegenParser"
+
+  extends="com.intellij.extapi.psi.ASTWrapperPsiElement"
+
+  psiClassPrefix="Pegen"
+  psiImplClassSuffix="Impl"
+  psiPackage="com.vpoverennov.psi"
+  psiImplPackage="com.vpoverennov.psi.impl"
+
+  elementTypeHolderClass="com.vpoverennov.psi.PegenTokenTypes"
+  elementTypeClass="com.vpoverennov.psi.PegenElementType"
+  tokenTypeClass="com.vpoverennov.psi.PegenTokenType"
+  psiImplUtilClass="com.vpoverennov.psi.impl.PegenPsiImplUtil"
+  tokens = [
+      NL='NL'
+      LINE_COMMENT='LINE_COMMENT'
+  ]
+}
+
+pegenFile ::= grammar_
+
+private grammar_ ::= meta_rule* (rule NEWLINE)* rule?
+meta_rule ::= AT META_NAME meta_body {pin=1}
+private meta_body ::= (NAME | STRING)? NEWLINE
+rule ::= RULE_NAME rule_return_type? COLON rule_body_ {
+    pin=1
+    mixin="com.vpoverennov.psi.impl.PegenNamedElementImpl"
+    implements="com.vpoverennov.psi.PegenNamedElement"
+    methods=[getName setName getNameIdentifier]
+}
+private rule_return_type ::= LSQB NAME STAR? RSQB {pin=1}
+private rule_body_ ::=alts_ NEWLINE more_alts_ | NEWLINE more_alts_ | alts_ /* (NEWLINE) */
+private more_alts_ ::= VBAR alts_ (NEWLINE more_alts_)* {pin=1}
+private alts_ ::= alt vbar_alt_*
+private vbar_alt_ ::= VBAR alt {pin=1}
+
+alt ::= item_+ DOLLAR_SIGN? action?
+private item_ ::= named_item_ | simple_item_ | lookahead_
+private named_item_ ::= NAME EQUAL simple_item_ {pin=2}
+private simple_item_ ::=
+    sqb_atom
+    | atom_ QUESTION_MARK
+    | atom_ STAR
+    | atom_ PLUS
+    | atom_ DOT atom_ PLUS
+    | atom_
+sqb_atom ::= LSQB NEWLINE? alts_ RSQB {pin = 1}
+private lookahead_ ::= AMPER atom_ | NOT atom_ | CUT atom_ {pin=1}
+private atom_ ::= named_atom | STRING | paren_atom
+paren_atom ::= LPAREN NEWLINE? alts_ RPAREN {pin=1}
+named_atom ::= NAME {
+   mixin="com.vpoverennov.psi.impl.PegenAtomElementImpl"
+   implements="com.vpoverennov.psi.PegenAtomElement"
+   methods=[getName setName getReference]
+}
+
+action ::= LBRACE target_atom_+ RBRACE {pin=1}
+private target_atom_ ::=
+    brace_atom_
+    | NAME
+    | NUMBER
+    | STRING
+    | QUESTION_MARK
+    | COLON
+    | !RBRACE op_
+private brace_atom_ ::=  LBRACE target_atom_+ RBRACE {pin=1}
+private op_ ::= OP | AT | COLON | LBRACE | RBRACE | VBAR | AMPER | LPAREN | RPAREN | STAR | PLUS | DOT | EQUAL | LSQB | RSQB | CUT | NOT | QUESTION_MARK

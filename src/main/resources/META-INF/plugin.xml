@@ -1,0 +1,30 @@
+<idea-plugin>
+    <id>com.vpoverennov.pegen</id>
+    <name>Pegen</name>
+    <version>0.1</version>
+    <vendor email="vasya.poverennov@gmail.com" url="https://github.com/vpoverennov/pegen-plugin/">vpoverennov</vendor>
+
+    <description><![CDATA[
+    PEG grammar plugin for Guido's pegen (https://github.com/gvanrossum/pegen/)<br>
+    Basic functions and syntax highlighting for .gram files
+    ]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <fileType name="Pegen file" implementationClass="com.vpoverennov.PegenFileType" fieldName="INSTANCE"
+                  language="Pegen" extensions="gram"/>
+        <lang.parserDefinition language="Pegen" implementationClass="com.vpoverennov.PegenParserDefinition"/>
+        <lang.syntaxHighlighterFactory language="Pegen" implementationClass="com.vpoverennov.PegenSyntaxHighlighterFactory"/>
+        <annotator language="Pegen" implementationClass="com.vpoverennov.PegenAnnotator"/>
+        <completion.contributor language="Pegen" implementationClass="com.vpoverennov.PegenCompletionContributor"/>
+        <lang.refactoringSupport language="Pegen" implementationClass="com.vpoverennov.PegenRefactoringSupportProvider"/>
+        <lang.findUsagesProvider language="Pegen" implementationClass="com.vpoverennov.PegenFindUsagesProvider"/>
+        <lang.commenter language="Pegen" implementationClass="com.vpoverennov.PegenCommenter"/>
+        <lang.braceMatcher language="Pegen" implementationClass="com.vpoverennov.PegenBraceMatcher"/>
+    </extensions>
+
+    <actions>
+        <!-- Add your actions here -->
+    </actions>
+</idea-plugin>
