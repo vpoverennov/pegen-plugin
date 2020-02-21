@@ -1,0 +1,86 @@
+start: grammar ENDMARKER
+
+grammar:
+    | metas rules { Grammar(rules, metas) }
+    | rules { Grammar(rules, []) }
+
+metas:
+    | meta metas { [meta] + metas }
+    | meta { [meta] }
+
+meta:
+    | "@" NAME NEWLINE { (name.string, None) }
+    | "@" a=NAME b=NAME NEWLINE { (a.string, b.string) }
+    | "@" NAME STRING NEWLINE { (name.string, literal_eval(string.string)) }
+
+rules:
+    | rule rules { [rule] + rules }
+    | rule { [rule] }
+
+rule:
+    | rulename ":" alts NEWLINE INDENT more_alts DEDENT { Rule(rulename[0], rulename[1], Rhs(alts.alts + more_alts.alts)) }
+    | rulename ":" NEWLINE INDENT more_alts DEDENT { Rule(rulename[0], rulename[1], more_alts) }
+    | rulename ":" alts NEWLINE { Rule(rulename[0], rulename[1], alts) }
+
+rulename:
+    | NAME '[' type=NAME '*' ']' {(name.string, type.string+"*")}
+    | NAME '[' type=NAME ']' {(name.string, type.string)}
+    | NAME {(name.string, None)}
+
+alts:
+    | alt "|" alts { Rhs([alt] + alts.alts)}
+    | alt { Rhs([alt]) }
+
+more_alts:
+    | "|" alts NEWLINE more_alts { Rhs(alts.alts + more_alts.alts) }
+    | "|" alts NEWLINE { Rhs(alts.alts) }
+
+alt:
+    | items '$' action { Alt(items + [NamedItem(None, NameLeaf('ENDMARKER'))], action=action) }
+    | items '$' { Alt(items + [NamedItem(None, NameLeaf('ENDMARKER'))], action=None) }
+    | items action { Alt(items, action=action) }
+    | items { Alt(items, action=None) }
+
+items:
+    | named_item items { [named_item] + items }
+    | named_item { [named_item] }
+
+named_item:
+    | NAME '=' ~ item {NamedItem(name.string, item)}
+    | item {NamedItem(None, item)}
+    | it=lookahead {NamedItem(None, it)}
+
+lookahead:
+    | '&' ~ atom {PositiveLookahead(atom)}
+    | '!' ~ atom {NegativeLookahead(atom)}
+    | '~' {Cut()}
+
+item:
+    | '[' ~ alts ']' {Opt(alts)}
+    |  atom '?' {Opt(atom)}
+    |  atom '*' {Repeat0(atom)}
+    |  atom '+' {Repeat1(atom)}
+    |  sep=atom '.' node=atom '+' {Gather(sep, node)}
+    |  atom {atom}
+
+atom:
+    | '(' ~ alts ')' {Group(alts)}
+    | NAME {NameLeaf(name.string) }
+    | STRING {StringLeaf(string.string)}
+
+# Mini-grammar for the actions
+
+action: "{" ~ target_atoms "}" { target_atoms }
+
+target_atoms:
+    | target_atom target_atoms { target_atom + " " + target_atoms }
+    | target_atom { target_atom }
+
+target_atom:
+    | "{" ~ target_atoms "}" { "{" + target_atoms + "}" }
+    | NAME { name.string }
+    | NUMBER { number.string }
+    | STRING { string.string }
+    | "?" { "?" }
+    | ":" { ":" }
+    | !"}" OP { op.string }
