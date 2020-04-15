@@ -2,7 +2,7 @@ package com.vpoverennov;
 
 import com.intellij.lexer.FlexLexer;
 import com.intellij.psi.tree.IElementType;
-import com.vpoverennov.psi.PegenTokenTypes;
+import com.vpoverennov.psi.PegenTokenType;import com.vpoverennov.psi.PegenTokenTypes;
 import com.intellij.psi.TokenType;
 
 %%
@@ -19,8 +19,8 @@ NEWLINE=\n\r|\r\n|\n|\r
 WHITE_SPACE=[\ \t\f]
 TDQSTRING=\"\"\"
 TSQSTRING=\'\'\'
-DQSTRING=\"[^\"\n\r]*\"
-SQSTRING='[^'\n\r]*'
+DQSTRING=\"([^\"\n\r]|\\\")*\"
+SQSTRING='([^'\n\r]|\\')*'
 IDENTIFIER=[\p{XID_Start}_][\p{XID_Continue}]*
 NUMBER=[\d]+
 LINE_COMMENT="#"[^\r\n]*{NEWLINE}
