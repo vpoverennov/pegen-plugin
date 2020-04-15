@@ -31,9 +31,8 @@ public class PegenReference extends PsiReferenceBase<PsiElement> implements PsiP
         PegenFile file = (PegenFile) myElement.getContainingFile();
         final List<PegenRule> rules = PegenUtil.findRules(file, key);
         List<ResolveResult> results = new ArrayList<>();
-        for (PegenRule rule : rules) {
+        for (PegenRule rule : rules)
             results.add(new PsiElementResolveResult(rule));
-        }
         return results.toArray(new ResolveResult[results.size()]);
     }
 

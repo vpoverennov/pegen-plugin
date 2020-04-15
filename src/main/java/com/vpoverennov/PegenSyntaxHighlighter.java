@@ -45,20 +45,19 @@ public class PegenSyntaxHighlighter extends SyntaxHighlighterBase {
     @NotNull
     @Override
     public TextAttributesKey[] getTokenHighlights(IElementType tokenType) {
-        if (tokenType.equals(PegenTokenTypes.VBAR)) {
+        if (tokenType.equals(PegenTokenTypes.VBAR))
             return OPERATOR_KEYS;
-        } else if (tokenType.equals(PegenTokenTypes.RULE_NAME)) {
+        else if (tokenType.equals(PegenTokenTypes.RULE_NAME))
             return RULE_NAME_KEYS;
-        } else if (tokenType.equals(PegenTokenTypes.NAMED_ATOM)) {
+        else if (tokenType.equals(PegenTokenTypes.NAMED_ATOM))
             return NAMED_ATOM_KEYS;
-        } else if (tokenType.equals(PegenTokenTypes.STRING)) {
+        else if (tokenType.equals(PegenTokenTypes.STRING))
             return STRING_KEYS;
-        } else if (tokenType.equals(PegenTokenTypes.LINE_COMMENT)) {
+        else if (tokenType.equals(PegenTokenTypes.LINE_COMMENT))
             return COMMENT_KEYS;
-        } else if (tokenType.equals(TokenType.BAD_CHARACTER)) {
+        else if (tokenType.equals(TokenType.BAD_CHARACTER))
             return BAD_CHARACTER_KEYS;
-        } else {
+        else
             return EMPTY_KEYS;
-        }
     }
 }

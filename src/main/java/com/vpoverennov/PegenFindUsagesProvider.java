@@ -35,30 +35,27 @@ public class PegenFindUsagesProvider implements FindUsagesProvider {
     @NotNull
     @Override
     public String getType(@NotNull PsiElement element) {
-        if (element instanceof PegenRule) {
+        if (element instanceof PegenRule)
             return "Pegen rule";
-        } else {
+        else
             return "";
-        }
     }
 
     @NotNull
     @Override
     public String getDescriptiveName(@NotNull PsiElement element) {
-        if (element instanceof PegenRule) {
+        if (element instanceof PegenRule)
             return ((PegenRule) element).getName();
-        } else {
+        else
             return "";
-        }
     }
 
     @NotNull
     @Override
     public String getNodeText(@NotNull PsiElement element, boolean useFullName) {
-        if (element instanceof PegenRule) {
+        if (element instanceof PegenRule)
             return ((PegenRule) element).getName() + "XXX";
-        } else {
+        else
             return "";
-        }
     }
 }
