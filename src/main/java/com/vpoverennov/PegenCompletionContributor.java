@@ -1,9 +1,9 @@
-
 package com.vpoverennov;
 
 import com.intellij.codeInsight.completion.*;
 import com.intellij.codeInsight.lookup.LookupElementBuilder;
 import com.intellij.patterns.PlatformPatterns;
+import com.intellij.psi.PsiElement;
 import com.intellij.util.ProcessingContext;
 import com.vpoverennov.psi.PegenFile;
 import com.vpoverennov.psi.PegenNamedAtom;
@@ -19,7 +19,7 @@ public class PegenCompletionContributor extends CompletionContributor {
                 PlatformPatterns.psiElement(PegenTokenTypes.META_NAME).withLanguage(PegenLanguage.INSTANCE),
                 new CompletionProvider<CompletionParameters>() {
                     public void addCompletions(@NotNull CompletionParameters parameters,
-                                               ProcessingContext context,
+                                               @NotNull ProcessingContext context,
                                                @NotNull CompletionResultSet resultSet) {
                         for (String metaName : PegenUtil.getPredefinedMetas())
                             resultSet.addElement(LookupElementBuilder.create(metaName));
@@ -30,11 +30,12 @@ public class PegenCompletionContributor extends CompletionContributor {
                 PlatformPatterns.psiElement(PegenTokenTypes.RULE_NAME).withLanguage(PegenLanguage.INSTANCE),
                 new CompletionProvider<CompletionParameters>() {
                     public void addCompletions(@NotNull CompletionParameters parameters,
-                                               ProcessingContext context,
+                                               @NotNull ProcessingContext context,
                                                @NotNull CompletionResultSet resultSet) {
-                        PegenFile file = (PegenFile) parameters.getOriginalPosition().getContainingFile();
-                        if (file == null)
+                        PsiElement originalPosition = parameters.getOriginalPosition();
+                        if (originalPosition == null)
                             return;
+                        PegenFile file = (PegenFile) originalPosition.getContainingFile();
                         List<PegenNamedAtom> namedAtoms = PegenUtil.findUnresolvedRules(file);
                         for (PegenNamedAtom namedAtom : namedAtoms)
                             if (namedAtom.getName() != null && namedAtom.getName().length() > 0)
@@ -46,11 +47,12 @@ public class PegenCompletionContributor extends CompletionContributor {
                 PlatformPatterns.psiElement(PegenTokenTypes.NAME).withLanguage(PegenLanguage.INSTANCE),
                 new CompletionProvider<CompletionParameters>() {
                     public void addCompletions(@NotNull CompletionParameters parameters,
-                                               ProcessingContext context,
+                                               @NotNull ProcessingContext context,
                                                @NotNull CompletionResultSet resultSet) {
-                        PegenFile file = (PegenFile) parameters.getOriginalPosition().getContainingFile();
-                        if (file == null)
+                        PsiElement originalPosition = parameters.getOriginalPosition();
+                        if (originalPosition == null)
                             return;
+                        PegenFile file = (PegenFile) originalPosition.getContainingFile();
                         List<PegenRule> rules = PegenUtil.findRules(file);
                         for (PegenRule rule : rules)
                             if (rule.getName() != null && rule.getName().length() > 0)
