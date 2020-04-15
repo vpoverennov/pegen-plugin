@@ -26,9 +26,11 @@ intellij {
 }
 patchPluginXml {
     changeNotes """
-                            v0.2:                                               <br>
-&nbsp;&nbsp;&nbsp;&nbsp;        Fixed end of line comments breaking parsing.    <br>
-&nbsp;&nbsp;&nbsp;&nbsp;        Fixed \\' and \\" in strings.                   <br>
-&nbsp;&nbsp;&nbsp;&nbsp;        Updated icon.                                   <br>
+        v0.2:
+        <ul>
+            <li>Fixed end of line comments breaking parsing.
+            <li>Fixed \\' and \\" in strings.
+            <li>Updated icon.
+        </ul>
     """
 }
