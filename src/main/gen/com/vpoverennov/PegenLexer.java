@@ -190,13 +190,13 @@ class PegenLexer implements FlexLexer {
   private static final int [] ZZ_ACTION = zzUnpackAction();
 
   private static final String ZZ_ACTION_PACKED_0 =
-    "\5\0\1\1\2\2\1\3\2\1\1\4\1\5\1\1"+
-    "\1\6\1\7\1\10\1\11\1\12\1\13\1\14\1\15"+
-    "\1\16\1\17\1\20\1\21\1\22\1\23\1\24\1\25"+
-    "\1\26\1\27\6\30\2\31\1\32\1\33\1\34\3\35"+
-    "\1\36\1\37\1\2\1\0\1\40\2\0\1\40\2\0"+
-    "\2\41\1\0\1\31\2\0\1\40\1\42\1\40\1\43"+
-    "\1\40\1\41\1\44";
+    "\5\0\1\1\2\2\1\3\2\1\1\4\1\5\1\6"+
+    "\1\7\1\10\1\11\1\12\1\13\1\14\1\15\1\16"+
+    "\1\17\1\20\1\21\1\22\1\23\1\24\1\25\1\26"+
+    "\1\27\1\30\6\31\2\32\1\33\1\34\1\6\1\35"+
+    "\3\36\1\37\1\40\1\2\1\0\1\41\2\0\1\41"+
+    "\2\0\1\32\2\6\2\0\1\41\1\42\1\41\1\43"+
+    "\1\41\1\6\1\44";
 
   private static int [] zzUnpackAction() {
     int [] result = new int[69];
@@ -229,10 +229,10 @@ class PegenLexer implements FlexLexer {
     "\0\271\0\271\0\271\0\271\0\271\0\271\0\u0206\0\u0206"+
     "\0\u0206\0\271\0\u022b\0\271\0\271\0\271\0\271\0\u0250"+
     "\0\u0206\0\271\0\u0275\0\u029a\0\u02bf\0\u02e4\0\u0309\0\u032e"+
-    "\0\u0353\0\u0378\0\271\0\271\0\u039d\0\u03c2\0\271\0\u03e7"+
-    "\0\271\0\u040c\0\u0431\0\u0456\0\u047b\0\u04a0\0\u04c5\0\u01e1"+
-    "\0\u04ea\0\u050f\0\u0534\0\271\0\u0559\0\u057e\0\271\0\271"+
-    "\0\u040c\0\271\0\u047b\0\271\0\271";
+    "\0\u0353\0\u0378\0\u039d\0\271\0\271\0\u03c2\0\u03e7\0\271"+
+    "\0\u040c\0\271\0\u0431\0\u0456\0\u047b\0\u04a0\0\u04c5\0\u04ea"+
+    "\0\u050f\0\271\0\u0534\0\u0559\0\u057e\0\u05a3\0\271\0\271"+
+    "\0\u0431\0\271\0\u04a0\0\271\0\271";
 
   private static int [] zzUnpackRowMap() {
     int [] result = new int[69];
@@ -263,31 +263,31 @@ class PegenLexer implements FlexLexer {
     "\1\22\1\23\1\24\1\25\1\26\1\27\1\30\1\31"+
     "\1\32\1\33\1\34\1\35\1\36\1\37\1\40\1\41"+
     "\1\42\1\43\1\44\1\45\1\46\1\6\1\47\1\50"+
-    "\1\51\1\12\1\13\1\6\1\52\1\6\1\15\1\16"+
-    "\1\6\1\51\1\53\1\20\1\21\1\22\1\23\1\24"+
+    "\1\51\1\12\1\13\1\6\1\52\1\6\1\15\1\53"+
+    "\1\6\1\51\1\54\1\20\1\21\1\22\1\23\1\24"+
     "\1\25\1\26\1\27\1\30\1\31\1\32\1\33\1\34"+
     "\1\35\1\36\1\37\1\40\1\41\1\42\1\43\1\44"+
-    "\1\45\1\46\2\54\1\6\1\54\1\55\6\54\2\6"+
-    "\32\54\1\6\2\54\1\56\5\54\2\6\30\54\1\57"+
-    "\2\6\4\57\1\60\3\57\2\6\30\57\47\0\1\61"+
-    "\43\0\1\61\46\0\1\11\10\0\1\11\30\0\1\62"+
-    "\2\0\1\62\1\63\1\62\1\64\36\62\1\65\2\0"+
-    "\2\65\1\66\1\67\36\65\7\0\3\14\44\0\1\15"+
-    "\33\0\1\70\1\71\1\72\42\70\27\0\1\42\44\0"+
-    "\1\42\1\0\1\41\51\0\1\73\35\0\1\42\12\0"+
-    "\1\42\31\0\1\42\12\0\1\41\31\0\1\42\13\0"+
-    "\1\41\30\0\1\42\14\0\1\41\2\0\1\74\43\0"+
-    "\1\74\46\0\1\51\10\0\1\51\37\0\3\52\37\0"+
-    "\1\75\45\0\1\76\46\0\3\60\33\0\1\62\2\0"+
-    "\1\62\1\77\1\62\1\64\36\62\4\0\1\100\40\0"+
-    "\1\62\2\0\1\62\1\101\1\62\1\64\36\62\1\65"+
-    "\2\0\2\65\1\77\1\67\36\65\5\0\1\102\37\0"+
-    "\1\65\2\0\2\65\1\103\1\67\36\65\2\0\1\104"+
-    "\43\0\1\104\101\0\1\42\12\0\1\105\45\0\1\105"+
-    "\37\0";
+    "\1\45\1\46\2\55\1\6\1\55\1\56\6\55\2\6"+
+    "\32\55\1\6\2\55\1\57\5\55\2\6\30\55\1\60"+
+    "\2\6\4\60\1\61\3\60\2\6\30\60\47\0\1\62"+
+    "\43\0\1\62\46\0\1\11\10\0\1\11\30\0\1\63"+
+    "\2\0\1\63\1\64\1\63\1\65\36\63\1\66\2\0"+
+    "\2\66\1\67\1\70\36\66\7\0\3\14\44\0\1\15"+
+    "\33\0\1\16\2\0\42\16\27\0\1\42\44\0\1\42"+
+    "\1\0\1\41\51\0\1\71\35\0\1\42\12\0\1\42"+
+    "\31\0\1\42\12\0\1\41\31\0\1\42\13\0\1\41"+
+    "\30\0\1\42\14\0\1\41\2\0\1\72\43\0\1\72"+
+    "\46\0\1\51\10\0\1\51\37\0\3\52\33\0\1\53"+
+    "\1\73\1\74\42\53\4\0\1\75\45\0\1\76\46\0"+
+    "\3\61\33\0\1\63\2\0\1\63\1\77\1\63\1\65"+
+    "\36\63\4\0\1\100\40\0\1\63\2\0\1\63\1\101"+
+    "\1\63\1\65\36\63\1\66\2\0\2\66\1\77\1\70"+
+    "\36\66\5\0\1\102\37\0\1\66\2\0\2\66\1\103"+
+    "\1\70\36\66\36\0\1\42\10\0\1\104\43\0\1\104"+
+    "\47\0\1\105\45\0\1\105\37\0";
 
   private static int [] zzUnpackTrans() {
-    int [] result = new int[1443];
+    int [] result = new int[1480];
     int offset = 0;
     offset = zzUnpackTrans(ZZ_TRANS_PACKED_0, offset, result);
     return result;
@@ -326,9 +326,9 @@ class PegenLexer implements FlexLexer {
 
   private static final String ZZ_ATTRIBUTE_PACKED_0 =
     "\5\0\1\11\10\1\10\11\3\1\1\11\1\1\4\11"+
-    "\2\1\1\11\10\1\2\11\2\1\1\11\1\1\1\11"+
-    "\1\0\1\1\2\0\1\1\2\0\2\1\1\0\1\11"+
-    "\2\0\2\11\1\1\1\11\1\1\2\11";
+    "\2\1\1\11\11\1\2\11\2\1\1\11\1\1\1\11"+
+    "\1\0\1\1\2\0\1\1\2\0\1\11\2\1\2\0"+
+    "\2\11\1\1\1\11\1\1\2\11";
 
   private static int [] zzUnpackAttribute() {
     int [] result = new int[69];
@@ -706,142 +706,142 @@ class PegenLexer implements FlexLexer {
             // fall through
           case 41: break;
           case 6: 
-            { return PegenTokenTypes.AT;
+            { return PegenTokenTypes.LINE_COMMENT;
             } 
             // fall through
           case 42: break;
           case 7: 
-            { return PegenTokenTypes.DOLLAR_SIGN;
+            { return PegenTokenTypes.AT;
             } 
             // fall through
           case 43: break;
           case 8: 
-            { parenlev += 1; return PegenTokenTypes.LBRACE;
+            { return PegenTokenTypes.DOLLAR_SIGN;
             } 
             // fall through
           case 44: break;
           case 9: 
-            { parenlev -= 1; return PegenTokenTypes.RBRACE;
+            { parenlev += 1; return PegenTokenTypes.LBRACE;
             } 
             // fall through
           case 45: break;
           case 10: 
-            { parenlev += 1; return PegenTokenTypes.LPAREN;
+            { parenlev -= 1; return PegenTokenTypes.RBRACE;
             } 
             // fall through
           case 46: break;
           case 11: 
-            { parenlev -= 1; return PegenTokenTypes.RPAREN;
+            { parenlev += 1; return PegenTokenTypes.LPAREN;
             } 
             // fall through
           case 47: break;
           case 12: 
-            { parenlev += 1; return PegenTokenTypes.LSQB;
+            { parenlev -= 1; return PegenTokenTypes.RPAREN;
             } 
             // fall through
           case 48: break;
           case 13: 
-            { parenlev -= 1; return PegenTokenTypes.RSQB;
+            { parenlev += 1; return PegenTokenTypes.LSQB;
             } 
             // fall through
           case 49: break;
           case 14: 
-            { return PegenTokenTypes.COLON;
+            { parenlev -= 1; return PegenTokenTypes.RSQB;
             } 
             // fall through
           case 50: break;
           case 15: 
-            { return PegenTokenTypes.VBAR;
+            { return PegenTokenTypes.COLON;
             } 
             // fall through
           case 51: break;
           case 16: 
-            { return PegenTokenTypes.EQUAL;
+            { return PegenTokenTypes.VBAR;
             } 
             // fall through
           case 52: break;
           case 17: 
-            { return PegenTokenTypes.PLUS;
+            { return PegenTokenTypes.EQUAL;
             } 
             // fall through
           case 53: break;
           case 18: 
-            { return PegenTokenTypes.STAR;
+            { return PegenTokenTypes.PLUS;
             } 
             // fall through
           case 54: break;
           case 19: 
-            { return PegenTokenTypes.CUT;
+            { return PegenTokenTypes.STAR;
             } 
             // fall through
           case 55: break;
           case 20: 
-            { return PegenTokenTypes.NOT;
+            { return PegenTokenTypes.CUT;
             } 
             // fall through
           case 56: break;
           case 21: 
-            { return PegenTokenTypes.AMPER;
+            { return PegenTokenTypes.NOT;
             } 
             // fall through
           case 57: break;
           case 22: 
-            { return PegenTokenTypes.QUESTION_MARK;
+            { return PegenTokenTypes.AMPER;
             } 
             // fall through
           case 58: break;
           case 23: 
-            { return PegenTokenTypes.DOT;
+            { return PegenTokenTypes.QUESTION_MARK;
             } 
             // fall through
           case 59: break;
           case 24: 
-            { return PegenTokenTypes.OP;
+            { return PegenTokenTypes.DOT;
             } 
             // fall through
           case 60: break;
           case 25: 
-            { return PegenTokenTypes.NL;
+            { return PegenTokenTypes.OP;
             } 
             // fall through
           case 61: break;
           case 26: 
-            { return TokenType.NEW_LINE_INDENT;
+            { return PegenTokenTypes.NL;
             } 
             // fall through
           case 62: break;
           case 27: 
-            { return parenlev > 0 ? PegenTokenTypes.NAME : PegenTokenTypes.RULE_NAME;
+            { return TokenType.NEW_LINE_INDENT;
             } 
             // fall through
           case 63: break;
           case 28: 
-            { yybegin(AWAITING_META_NAME); return PegenTokenTypes.AT;
+            { return parenlev > 0 ? PegenTokenTypes.NAME : PegenTokenTypes.RULE_NAME;
             } 
             // fall through
           case 64: break;
           case 29: 
-            { 
+            { yybegin(AWAITING_META_NAME); return PegenTokenTypes.AT;
             } 
             // fall through
           case 65: break;
           case 30: 
-            { yybegin(YYINITIAL);
+            { 
             } 
             // fall through
           case 66: break;
           case 31: 
-            { yybegin(YYINITIAL); return PegenTokenTypes.META_NAME;
+            { yybegin(YYINITIAL);
             } 
             // fall through
           case 67: break;
           case 32: 
-            { return PegenTokenTypes.STRING;
+            { yybegin(YYINITIAL); return PegenTokenTypes.META_NAME;
             } 
             // fall through
           case 68: break;
           case 33: 
-            { return PegenTokenTypes.LINE_COMMENT;
+            { return PegenTokenTypes.STRING;
             } 
             // fall through
           case 69: break;

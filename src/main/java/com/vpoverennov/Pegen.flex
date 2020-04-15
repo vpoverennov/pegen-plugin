@@ -23,7 +23,7 @@ DQSTRING=\"([^\"\n\r]|\\\")*\"
 SQSTRING='([^'\n\r]|\\')*'
 IDENTIFIER=[\p{XID_Start}_][\p{XID_Continue}]*
 NUMBER=[\d]+
-LINE_COMMENT="#"[^\r\n]*{NEWLINE}
+LINE_COMMENT="#"[^\r\n]*
 
 %{
     int parenlev = 0;
@@ -53,8 +53,9 @@ LINE_COMMENT="#"[^\r\n]*{NEWLINE}
 }
 
 <YYINITIAL> {
+    ^{LINE_COMMENT}{NEWLINE} { return PegenTokenTypes.LINE_COMMENT; }
     {LINE_COMMENT} { return PegenTokenTypes.LINE_COMMENT; }
-    
+
     ^{WHITE_SPACE}+ { return TokenType.NEW_LINE_INDENT; }
     {WHITE_SPACE}+ { return TokenType.WHITE_SPACE; }
     
