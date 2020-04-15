@@ -33,6 +33,8 @@ public class PegenCompletionContributor extends CompletionContributor {
                                                ProcessingContext context,
                                                @NotNull CompletionResultSet resultSet) {
                         PegenFile file = (PegenFile) parameters.getOriginalPosition().getContainingFile();
+                        if (file == null)
+                            return;
                         List<PegenNamedAtom> namedAtoms = PegenUtil.findUnresolvedRules(file);
                         for (PegenNamedAtom namedAtom : namedAtoms)
                             if (namedAtom.getName() != null && namedAtom.getName().length() > 0)
@@ -47,6 +49,8 @@ public class PegenCompletionContributor extends CompletionContributor {
                                                ProcessingContext context,
                                                @NotNull CompletionResultSet resultSet) {
                         PegenFile file = (PegenFile) parameters.getOriginalPosition().getContainingFile();
+                        if (file == null)
+                            return;
                         List<PegenRule> rules = PegenUtil.findRules(file);
                         for (PegenRule rule : rules)
                             if (rule.getName() != null && rule.getName().length() > 0)
