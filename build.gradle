@@ -8,7 +8,7 @@ sourceSets {
 }
 
 group 'org.vpoverennov'
-version '0.1'
+version '0.2'
 
 sourceCompatibility = 1.8
 
@@ -26,5 +26,9 @@ intellij {
 }
 patchPluginXml {
     changeNotes """
-      Basic function and syntax highlighting."""
+                            v0.2:                                               <br>
+&nbsp;&nbsp;&nbsp;&nbsp;        Fixed end of line comments breaking parsing.    <br>
+&nbsp;&nbsp;&nbsp;&nbsp;        Fixed \\' and \\" in strings.                   <br>
+&nbsp;&nbsp;&nbsp;&nbsp;        Updated icon.                                   <br>
+    """
 }

@@ -1,7 +1,6 @@
 <idea-plugin>
     <id>com.vpoverennov.pegen</id>
     <name>Pegen</name>
-    <version>0.1</version>
     <vendor email="vasiliy@poverennov.com" url="https://github.com/vpoverennov/pegen-plugin/">vpoverennov</vendor>
 
     <description><![CDATA[
