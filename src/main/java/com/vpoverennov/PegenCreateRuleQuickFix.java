@@ -49,7 +49,8 @@ class PegenCreateRuleQuickFix extends BaseIntentionAction {
     private void createRule(final Project project, final PegenFile pegenFile) {
         WriteCommandAction.writeCommandAction(project).run(() -> {
             ASTNode lastChildNode = pegenFile.getNode().getLastChildNode();
-            if (lastChildNode != null && !lastChildNode.getElementType().equals(PegenTokenTypes.NEWLINE) && !lastChildNode.getElementType().equals(PegenTokenTypes.NL))
+            boolean shouldAddNewline = lastChildNode != null && !lastChildNode.getElementType().equals(PegenTokenTypes.NEWLINE) && !lastChildNode.getElementType().equals(PegenTokenTypes.NL);
+            if (shouldAddNewline)
                 pegenFile.getNode().addChild(PegenElementFactory.createNEWLINE(project).getNode());
             PegenRule rule = PegenElementFactory.createRule(project, key, "''");
             pegenFile.getNode().addChild(rule.getNode());
