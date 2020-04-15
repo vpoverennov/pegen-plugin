@@ -21,22 +21,18 @@ public class PegenUtil {
     public static List<PegenRule> findRules(PegenFile file, String key) {
         List<PegenRule> result = new ArrayList<>();
         PegenRule[] rules = PsiTreeUtil.getChildrenOfType(file, PegenRule.class);
-        if (rules != null) {
-            for (PegenRule rule : rules) {
-                if (key.equals(rule.getName())) {
+        if (rules != null)
+            for (PegenRule rule : rules)
+                if (key.equals(rule.getName()))
                     result.add(rule);
-                }
-            }
-        }
         return result;
     }
 
     public static List<PegenRule> findRules(PegenFile file) {
         List<PegenRule> result = new ArrayList<>();
         PegenRule[] rules = PsiTreeUtil.getChildrenOfType(file, PegenRule.class);
-        if (rules != null) {
+        if (rules != null)
             Collections.addAll(result, rules);
-        }
         return result;
     }
 
@@ -58,14 +54,12 @@ public class PegenUtil {
     public static PegenNamedAtom[] getReferences(PegenRule rule) {
         List<PegenNamedAtom> result = new ArrayList<>();
         PegenAlt[] alts = PsiTreeUtil.getChildrenOfType(rule, PegenAlt.class);
-        if (alts != null) {
+        if (alts != null)
             for (PegenAlt alt : alts) {
                 PegenNamedAtom[] namedAtoms = PsiTreeUtil.getChildrenOfType(alt, PegenNamedAtom.class);
-                if (namedAtoms != null) {
+                if (namedAtoms != null)
                     Collections.addAll(result, namedAtoms);
-                }
             }
-        }
         return result.toArray(new PegenNamedAtom[result.size()]);
     }
 }

@@ -21,9 +21,8 @@ public class PegenCompletionContributor extends CompletionContributor {
                     public void addCompletions(@NotNull CompletionParameters parameters,
                                                ProcessingContext context,
                                                @NotNull CompletionResultSet resultSet) {
-                        for (String metaName : PegenUtil.getPredefinedMetas()) {
+                        for (String metaName : PegenUtil.getPredefinedMetas())
                             resultSet.addElement(LookupElementBuilder.create(metaName));
-                        }
                     }
                 }
         );
@@ -35,11 +34,9 @@ public class PegenCompletionContributor extends CompletionContributor {
                                                @NotNull CompletionResultSet resultSet) {
                         PegenFile file = (PegenFile) parameters.getOriginalPosition().getContainingFile();
                         List<PegenNamedAtom> namedAtoms = PegenUtil.findUnresolvedRules(file);
-                        for (PegenNamedAtom namedAtom : namedAtoms) {
-                            if (namedAtom.getName() != null && namedAtom.getName().length() > 0) {
+                        for (PegenNamedAtom namedAtom : namedAtoms)
+                            if (namedAtom.getName() != null && namedAtom.getName().length() > 0)
                                 resultSet.addElement(LookupElementBuilder.create(namedAtom.getName()));
-                            }
-                        }
                     }
                 }
         );
@@ -51,11 +48,9 @@ public class PegenCompletionContributor extends CompletionContributor {
                                                @NotNull CompletionResultSet resultSet) {
                         PegenFile file = (PegenFile) parameters.getOriginalPosition().getContainingFile();
                         List<PegenRule> rules = PegenUtil.findRules(file);
-                        for (PegenRule rule : rules) {
-                            if (rule.getName() != null && rule.getName().length() > 0) {
+                        for (PegenRule rule : rules)
+                            if (rule.getName() != null && rule.getName().length() > 0)
                                 resultSet.addElement(LookupElementBuilder.create(rule.getName()));
-                            }
-                        }
                     }
                 }
         );
