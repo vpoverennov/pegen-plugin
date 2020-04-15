@@ -60,6 +60,6 @@ public class PegenUtil {
                 if (namedAtoms != null)
                     Collections.addAll(result, namedAtoms);
             }
-        return result.toArray(new PegenNamedAtom[result.size()]);
+        return result.toArray(new PegenNamedAtom[0]);
     }
 }
