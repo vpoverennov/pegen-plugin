@@ -58,7 +58,7 @@ LINE_COMMENT="#"[^\r\n]*
 
     ^{WHITE_SPACE}+ { return TokenType.NEW_LINE_INDENT; }
     {WHITE_SPACE}+ { return TokenType.WHITE_SPACE; }
-    
+
     ^{NEWLINE} { return PegenTokenTypes.NL; }
     {NEWLINE} { return parenlev > 0 ? PegenTokenTypes.NL : PegenTokenTypes.NEWLINE; }
 
@@ -70,16 +70,16 @@ LINE_COMMENT="#"[^\r\n]*
     {TSQSTRING} { yybegin(IN_TSQSTRING); }
     {DQSTRING} { return PegenTokenTypes.STRING; }
     {SQSTRING} { return PegenTokenTypes.STRING; }
-    
+
     "$" { return PegenTokenTypes.DOLLAR_SIGN; }
-    
+
     "{" { parenlev += 1; return PegenTokenTypes.LBRACE; }
     "}" { parenlev -= 1; return PegenTokenTypes.RBRACE; }
     "(" { parenlev += 1; return PegenTokenTypes.LPAREN; }
     ")" { parenlev -= 1; return PegenTokenTypes.RPAREN; }
     "[" { parenlev += 1; return PegenTokenTypes.LSQB; }
     "]" { parenlev -= 1; return PegenTokenTypes.RSQB; }
-    
+
     "@" { return PegenTokenTypes.AT; }
     ":" { return PegenTokenTypes.COLON; }
     "|" { return PegenTokenTypes.VBAR; }
@@ -91,9 +91,9 @@ LINE_COMMENT="#"[^\r\n]*
     "&" { return PegenTokenTypes.AMPER; }
     "?" { return PegenTokenTypes.QUESTION_MARK; }
     "." { return PegenTokenTypes.DOT; }
-    
-    
-    
+
+
+
 //     OTHER OPS
 //    "!=" { return PegenTokenTypes.OP; }
     "%" { return PegenTokenTypes.OP; }
