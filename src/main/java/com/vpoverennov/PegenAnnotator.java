@@ -28,6 +28,10 @@ public class PegenAnnotator implements Annotator {
             "AWAIT",
     };
 
+    public static boolean isKnownTokenName(String name) {
+        return Arrays.asList(KNOWN_TOKEN_NAMES).contains(name);
+    }
+
     @Override
     public void annotate(@NotNull final PsiElement element, @NotNull AnnotationHolder holder) {
         if (element instanceof PegenNamedAtom)
@@ -38,7 +42,7 @@ public class PegenAnnotator implements Annotator {
         String name = namedAtom.getName();
         if (name == null)
             return;
-        if (Arrays.asList(KNOWN_TOKEN_NAMES).contains(name))
+        if (isKnownTokenName(name))
             return;
         List<PegenRule> rules = PegenUtil.findRules((PegenFile) namedAtom.getContainingFile(), name);
         if (!rules.isEmpty())
