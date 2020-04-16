@@ -25,6 +25,7 @@ intellij {
     version '2019.3.2'
 }
 patchPluginXml {
+    untilBuild "202.0"
     changeNotes """
         v0.2:
         <ul>
