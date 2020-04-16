@@ -8,7 +8,7 @@ sourceSets {
 }
 
 group 'org.vpoverennov'
-version '0.2'
+version '0.3'
 
 sourceCompatibility = 1.8
 
@@ -27,6 +27,10 @@ intellij {
 patchPluginXml {
     untilBuild "202.0"
     changeNotes """
+        v0.3:
+        <ul>
+            <li>Add compatibility with IDEA 2020
+        </ul>
         v0.2:
         <ul>
             <li>Fixed end of line comments breaking parsing.
