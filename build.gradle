@@ -8,7 +8,7 @@ sourceSets {
 }
 
 group 'org.vpoverennov'
-version '0.4'
+version '0.5'
 
 sourceCompatibility = 17
 
@@ -27,6 +27,10 @@ intellij {
 patchPluginXml {
 //    untilBuild "202.0"
     changeNotes.set(provider {"""
+        v0.5:
+        <ul>
+            <li>Add compatibility with IDEA 2023
+        </ul>
         v0.4:
         <ul>
             <li>Add compatibility with IDEA 2022
