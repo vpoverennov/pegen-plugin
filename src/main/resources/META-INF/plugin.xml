@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.vpoverennov.pegen</id>
     <name>Pegen</name>
-    <vendor email="vasiliy@poverennov.com" url="https://github.com/vpoverennov/pegen-plugin/">vpoverennov</vendor>
+    <vendor email="vasiliy@poverennov.com" url="https://github.com/vpoverennov/pegen-plugin/">Vasiliy Poverennov</vendor>
 
     <description><![CDATA[
     PEG grammar plugin for Guido's pegen (https://github.com/gvanrossum/pegen/)<br>
