@@ -10,7 +10,7 @@ sourceSets {
 group 'org.vpoverennov'
 version '0.4'
 
-sourceCompatibility = 1.8
+sourceCompatibility = 17
 
 repositories {
     mavenCentral()
@@ -22,7 +22,7 @@ repositories {
 
 // See https://github.com/JetBrains/gradle-intellij-plugin/
 intellij {
-    version.set('2022.1')
+    version.set('2023.2')
 }
 patchPluginXml {
 //    untilBuild "202.0"
