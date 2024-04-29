@@ -17,3 +17,8 @@ Screenshots:
 ![Screenshot 1](screenshots/syntax_hl.png)
 ![Screenshot 2](screenshots/unresolved_rule.png)
 ![Screenshot 3](screenshots/rename.png)
+
+# how to build
+
+- install gradle plugin for the IDE
+- run `gradle package plugin` task from the side explorer
