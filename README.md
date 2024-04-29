@@ -21,4 +21,5 @@ Screenshots:
 # how to build
 
 - install gradle plugin for the IDE
-- run `gradle package plugin` task from the side explorer
+- Gradle (side-bar) > Run Configurations > `package plugin`
+- the plugin will be available under build/distributions
