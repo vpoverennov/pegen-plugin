@@ -8,7 +8,7 @@ sourceSets {
 }
 
 group 'org.vpoverennov'
-version '0.5'
+version '0.6'
 
 sourceCompatibility = 17
 
@@ -22,10 +22,13 @@ repositories {
 
 // See https://github.com/JetBrains/gradle-intellij-plugin/
 intellij {
-    version.set('2023.2')
+//     version.set('LATEST-EAP-SNAPSHOT')
+    version.set('2024.1')
 }
+
 patchPluginXml {
-//    untilBuild "202.0"
+//     sinceBuild '223'
+//     untilBuild "242.*"
     changeNotes.set(provider {"""
         v0.5:
         <ul>
