@@ -1,8 +1,8 @@
 package com.vpoverennov;
 
-import com.intellij.lang.annotation.Annotation;
 import com.intellij.lang.annotation.AnnotationHolder;
 import com.intellij.lang.annotation.Annotator;
+import com.intellij.lang.annotation.HighlightSeverity;
 import com.intellij.psi.PsiElement;
 import com.vpoverennov.psi.PegenFile;
 import com.vpoverennov.psi.PegenNamedAtom;
@@ -47,8 +47,10 @@ public class PegenAnnotator implements Annotator {
         List<PegenRule> rules = PegenUtil.findRules((PegenFile) namedAtom.getContainingFile(), name);
         if (!rules.isEmpty())
             return;
-        Annotation unresolvedRule = holder.createErrorAnnotation(namedAtom, "Unresolved rule name");
-        unresolvedRule.setTextAttributes(PegenSyntaxHighlighter.BAD_CHARACTER);
-        unresolvedRule.registerFix(new PegenCreateRuleQuickFix(name));
+        holder.newAnnotation(HighlightSeverity.ERROR, "Unresolved rule name")
+                .range(namedAtom)
+                .textAttributes(PegenSyntaxHighlighter.BAD_CHARACTER)
+                .withFix(new PegenCreateRuleQuickFix(name))
+                .create();
     }
 }

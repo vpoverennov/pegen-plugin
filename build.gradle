@@ -1,6 +1,6 @@
 plugins {
     id 'java'
-    id 'org.jetbrains.intellij' version '1.16.0'
+    id 'org.jetbrains.intellij.platform' version '2.2.1'
 }
 
 sourceSets {
@@ -8,44 +8,56 @@ sourceSets {
 }
 
 group 'org.vpoverennov'
-version '0.7'
+version '0.8'
 
-sourceCompatibility = 17
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
 
 repositories {
     mavenCentral()
+    intellijPlatform {
+        defaultRepositories()
+    }
 }
 
-//dependencies {
-//    testCompile group: 'junit', name: 'junit', version: '4.12'
-//}
-
-// See https://github.com/JetBrains/gradle-intellij-plugin/
-intellij {
-    version.set('2024.1')
+dependencies {
+    intellijPlatform {
+        intellijIdeaCommunity('2024.3')
+    }
 }
 
-patchPluginXml {
-    sinceBuild.set("241")
-    untilBuild.set("244.*")
-    changeNotes.set(provider {"""
-        v0.5:
-        <ul>
-            <li>Add compatibility with IDEA 2023
-        </ul>
-        v0.4:
-        <ul>
-            <li>Add compatibility with IDEA 2022
-        </ul>
-        v0.3:
-        <ul>
-            <li>Add compatibility with IDEA 2020
-        </ul>
-        v0.2:
-        <ul>
-            <li>Fixed end of line comments breaking parsing.
-            <li>Fixed \\' and \\" in strings.
-            <li>Updated icon.
-        </ul>
-    """})
+intellijPlatform {
+    pluginConfiguration {
+        ideaVersion {
+            sinceBuild = '243'
+            untilBuild = '251.*'
+        }
+        changeNotes = """
+            v0.8:
+            <ul>
+                <li>Migrated to IntelliJ Platform Gradle Plugin 2.x and IDEA 2024.3
+                <li>Replaced deprecated annotation and icon loader APIs
+            </ul>
+            v0.5:
+            <ul>
+                <li>Add compatibility with IDEA 2023
+            </ul>
+            v0.4:
+            <ul>
+                <li>Add compatibility with IDEA 2022
+            </ul>
+            v0.3:
+            <ul>
+                <li>Add compatibility with IDEA 2020
+            </ul>
+            v0.2:
+            <ul>
+                <li>Fixed end of line comments breaking parsing.
+                <li>Fixed \\' and \\" in strings.
+                <li>Updated icon.
+            </ul>
+        """
+    }
 }
